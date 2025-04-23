@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tombola Ticket</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f8ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .ticket {
+      display: grid;
+      grid-template-columns: repeat(9, 50px);
+      grid-template-rows: repeat(3, 50px);
+      gap: 5px;
+      margin-bottom: 30px;
+    }
+    .cell {
+      width: 50px;
+      height: 50px;
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: white;
+      cursor: pointer;
+      user-select: none;
+    }
+    .marked {
+      background-color: #90ee90;
+    }
+  </style>
+</head>
+<body>
+  <h1>Your Tombola Ticket</h1>
+  <div class="ticket" id="ticket"></div>
+  <script>
+    function generateTicket() {
+      const ticket = Array.from({ length: 3 }, () => Array(9).fill(null));
+      for (let row = 0; row < 3; row++) {
+        let nums = new Set();
+        while (nums.size < 5) {
+          let col = Math.floor(Math.random() * 9);
+          if (ticket[row][col] === null) {
+            let min = col * 10 + 1;
+            let max = col === 8 ? 90 : col * 10 + 10;
+            let num;
+            do {
+              num = Math.floor(Math.random() * (max - min)) + min;
+            } while ([...nums].includes(num));
+            ticket[row][col] = num;
+            nums.add(num);
+          }
+        }
+      }
+      return ticket;
+    }
+
+    function renderTicket(ticket) {
+      const ticketDiv = document.getElementById('ticket');
+      ticketDiv.innerHTML = '';
+      for (let row = 0; row < 3; row++) {
+        for (let col = 0; col < 9; col++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          const num = ticket[row][col];
+          if (num !== null) {
+            cell.textContent = num;
+          }
+          cell.addEventListener('click', () => {
+            if (cell.textContent !== '') {
+              cell.classList.toggle('marked');
+            }
+          });
+          ticketDiv.appendChild(cell);
+        }
+      }
+    }
+
+    const ticket = generateTicket();
+    renderTicket(ticket);
+  </script>
+</body>
+</html>
