@@ -1,23 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tombola Ticket 1</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; background: #fff8dc; }
-        h1 { margin-top: 20px; }
-        table { margin: 20px auto; border-collapse: collapse; }
-        td { width: 50px; height: 50px; border: 1px solid #333; font-size: 20px; font-weight: bold; vertical-align: middle; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tombola Ticket 1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid #333;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .marked {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .wrong {
+      background-color: #e74c3c;
+      color: white;
+    }
+    .empty {
+      background-color: #f0f0f0;
+      cursor: default;
+    }
+    #wrongToggle {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Tombola Ticket 1</h1>
-    <table>
-<tr><td>3</td><td></td><td>24</td><td></td><td>47</td><td>56</td><td></td><td>80</td><td></td></tr>
-<tr><td>5</td><td>16</td><td>28</td><td>33</td><td></td><td></td><td>69</td><td></td><td></td></tr>
-<tr><td></td><td>20</td><td></td><td>31</td><td>50</td><td>57</td><td></td><td></td><td>90</td></tr>
+  <h1>🎟️ Tombola Ticket 1</h1>
 
-    </table>
+  <table id="ticket">
+    <!-- Example numbers for demo (replace with actual ticket content) -->
+    <tr>
+      <td>5</td><td class="empty"></td><td>23</td><td class="empty"></td><td>45</td><td class="empty"></td><td>67</td><td class="empty"></td><td>89</td>
+    </tr>
+    <tr>
+      <td class="empty"></td><td>14</td><td class="empty"></td><td>34</td><td class="empty"></td><td>58</td><td class="empty"></td><td>79</td><td class="empty"></td>
+    </tr>
+    <tr>
+      <td>2</td><td class="empty"></td><td class="empty"></td><td>33</td><td class="empty"></td><td class="empty"></td><td>66</td><td class="empty"></td><td>82</td>
+    </tr>
+  </table>
+
+  <div id="wrongToggle">
+    <label>
+      <input type="checkbox" id="wrongMode" />
+      Mark as Wrong (Red)
+    </label>
+  </div>
+
+  <script>
+    document.querySelectorAll('#ticket td').forEach(cell => {
+      if (!cell.classList.contains('empty')) {
+        cell.addEventListener('click', () => {
+          const wrong = document.getElementById('wrongMode').checked;
+          if (cell.classList.contains('marked') || cell.classList.contains('wrong')) {
+            cell.classList.remove('marked', 'wrong');
+          } else {
+            cell.classList.add(wrong ? 'wrong' : 'marked');
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
