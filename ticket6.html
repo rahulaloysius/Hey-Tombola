@@ -1,23 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tombola Ticket 6</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; background: #fff8dc; }
-        h1 { margin-top: 20px; }
-        table { margin: 20px auto; border-collapse: collapse; }
-        td { width: 50px; height: 50px; border: 1px solid #333; font-size: 20px; font-weight: bold; vertical-align: middle; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tombola Ticket 6</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    table {
+      margin: auto;
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid #333;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      vertical-align: middle;
+    }
+    .marked {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .wrong {
+      background-color: #e74c3c;
+      color: white;
+    }
+    .empty {
+      background-color: #f0f0f0;
+      cursor: default;
+    }
+    #wrongToggle {
+      margin-top: 20px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Tombola Ticket 6</h1>
-    <table>
-<tr><td>8</td><td>12</td><td></td><td></td><td></td><td>57</td><td>69</td><td></td><td>85</td></tr>
-<tr><td></td><td></td><td>27</td><td>39</td><td>48</td><td></td><td>66</td><td>80</td><td></td></tr>
-<tr><td>5</td><td>15</td><td>26</td><td>35</td><td></td><td>54</td><td></td><td></td><td></td></tr>
-
-    </table>
-</body>
-</html>
+  <h1>🎟️ Tombola Ticket 6</h1>
+  <table id="ticket">
+    <tr><td>4</td><td class="empty"></td><td class="empty"></td><td>36</td><td>47</td><td>55</td><td class="empty"></td><td>75</td><td>85</td></tr>
+    <tr><td class="empty"></td><td>17</td><td>28</td><td class="empty"></td><td class="empty"></td><td>53</td><td>62</td><td
