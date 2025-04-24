@@ -43,27 +43,17 @@
 </head>
 <body>
   <h1>🎟️ Tombola Ticket 1</h1>
-
   <table id="ticket">
-    <!-- Example numbers for demo (replace with actual ticket content) -->
-    <tr>
-      <td>5</td><td class="empty"></td><td>23</td><td class="empty"></td><td>45</td><td class="empty"></td><td>67</td><td class="empty"></td><td>89</td>
-    </tr>
-    <tr>
-      <td class="empty"></td><td>14</td><td class="empty"></td><td>34</td><td class="empty"></td><td>58</td><td class="empty"></td><td>79</td><td class="empty"></td>
-    </tr>
-    <tr>
-      <td>2</td><td class="empty"></td><td class="empty"></td><td>33</td><td class="empty"></td><td class="empty"></td><td>66</td><td class="empty"></td><td>82</td>
-    </tr>
+    <tr><td class="empty"></td><td class="empty"></td><td>17</td><td>24</td><td class="empty"></td><td>55</td><td class="empty"></td><td>78</td><td>85</td></tr>
+    <tr><td>6</td><td class="empty"></td><td>13</td><td class="empty"></td><td>40</td><td>56</td><td>66</td><td class="empty"></td><td>87</td></tr>
+    <tr><td>9</td><td>12</td><td class="empty"></td><td class="empty"></td><td>41</td><td class="empty"></td><td class="empty"></td><td>73</td><td class="empty"></td></tr>
   </table>
-
   <div id="wrongToggle">
     <label>
       <input type="checkbox" id="wrongMode" />
-       I have a doubt (Red)
+      I have a doubt (Red)
     </label>
   </div>
-
   <script>
     document.querySelectorAll('#ticket td').forEach(cell => {
       if (!cell.classList.contains('empty')) {
