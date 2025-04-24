@@ -3,70 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Tombola Ticket 9</title>
+  <title>Ticket 9</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    table {
-      margin: auto;
-      border-collapse: collapse;
-    }
-    td {
-      border: 1px solid #333;
-      width: 50px;
-      height: 50px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      text-align: center;
-      vertical-align: middle;
-    }
-    .marked {
-      background-color: #4CAF50;
-      color: white;
-    }
-    .wrong {
-      background-color: #e74c3c;
-      color: white;
-    }
-    .empty {
-      background-color: #f0f0f0;
-      cursor: default;
-    }
-    #wrongToggle {
-      margin-top: 20px;
-    }
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 30px; }
+    table { border-collapse: collapse; margin: 0 auto; }
+    td { width: 40px; height: 40px; text-align: center; vertical-align: middle; font-size: 20px; border: 1px solid #333; }
+    .marked { background-color: lightgreen; }
+    .doubt { background-color: #ffcccc; }
+    button { margin-top: 20px; padding: 8px 16px; }
   </style>
 </head>
 <body>
-  <h1>🎟️ Tombola Ticket 9</h1>
+  <h2>Ticket 9</h2>
   <table id="ticket">
-    <tr><td class="empty"></td><td>12</td><td>18</td><td class="empty"></td><td>40</td><td class="empty"></td><td>69</td><td>82</td><td class="empty"></td></tr>
-    <tr><td>6</td><td class="empty"></td><td>22</td><td class="empty"></td><td>53</td><td>62</td><td class="empty"></td><td>73</td><td class="empty"></td></tr>
-    <tr><td>7</td><td>15</td><td class="empty"></td><td>30</td><td>50</td><td>60</td><td class="empty"></td><td>77</td><td class="empty"></td></tr>
+<tr><td onclick='toggleMark(this)'>8</td><td onclick='toggleMark(this)'>19</td><td onclick='toggleMark(this)'>26</td><td></td><td onclick='toggleMark(this)'>43</td><td></td><td onclick='toggleMark(this)'>65</td><td></td><td></td></tr>
+<tr><td></td><td onclick='toggleMark(this)'>18</td><td></td><td onclick='toggleMark(this)'>35</td><td></td><td></td><td onclick='toggleMark(this)'>64</td><td onclick='toggleMark(this)'>73</td><td onclick='toggleMark(this)'>87</td></tr>
+<tr><td></td><td onclick='toggleMark(this)'>17</td><td></td><td onclick='toggleMark(this)'>32</td><td></td><td onclick='toggleMark(this)'>55</td><td onclick='toggleMark(this)'>70</td><td onclick='toggleMark(this)'>74</td><td></td></tr>
+
   </table>
-  <div id="wrongToggle">
-    <label>
-      <input type="checkbox" id="wrongMode" />
-      I have a doubt (Red)
-    </label>
-  </div>
+  <button onclick="toggleDoubt()">I Have a Doubt (Red)</button>
   <script>
-    document.querySelectorAll('#ticket td').forEach(cell => {
-      if (!cell.classList.contains('empty')) {
-        cell.addEventListener('click', () => {
-          const wrong = document.getElementById('wrongMode').checked;
-          if (cell.classList.contains('marked') || cell.classList.contains('wrong')) {
-            cell.classList.remove('marked', 'wrong');
-          } else {
-            cell.classList.add(wrong ? 'wrong' : 'marked');
-          }
-        });
+    let doubtMode = false;
+    function toggleMark(cell) {
+      if (!cell.innerText.trim()) return;
+      if (doubtMode) {
+        cell.classList.toggle('doubt');
+      } else {
+        cell.classList.toggle('marked');
       }
-    });
+    }
+    function toggleDoubt() {
+      doubtMode = !doubtMode;
+    }
   </script>
 </body>
 </html>
