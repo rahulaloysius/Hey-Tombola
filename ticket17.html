@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ticket 14</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+    }
+    td {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #333;
+      text-align: center;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .marked {
+      background-color: #90ee90;
+    }
+    .wrong {
+      background-color: #ffcccb;
+    }
+    #wrongToggle {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>JUSTINA VASANTHI</h1>
+
+  <table id="ticket">
+    <tbody>
+      <tr>
+        <td>4</td><td>12</td><td></td><td></td><td>47</td><td></td><td></td><td>71</td><td>85</td>
+      </tr>
+      <tr>
+        <td>8</td><td></td><td>24</td><td></td><td></td><td>55</td><td>60</td><td></td><td>82</td>
+      </tr>
+      <tr>
+        <td></td><td>17</td><td></td><td>38</td><td></td><td>56</td><td>66</td><td>76</td><td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="wrongToggle">
+    <label>
+      <input type="checkbox" id="wrongMode" />
+      I have a doubt (Red)
+    </label>
+  </div>
+
+  <script>
+    const cells = document.querySelectorAll("#ticket td");
+    const wrongModeCheckbox = document.getElementById("wrongMode");
+
+    cells.forEach(cell => {
+      if (cell.textContent.trim() !== "") {
+        cell.addEventListener("click", () => {
+          if (wrongModeCheckbox.checked) {
+            cell.classList.toggle("wrong");
+            cell.classList.remove("marked");
+          } else {
+            cell.classList.toggle("marked");
+            cell.classList.remove("wrong");
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
